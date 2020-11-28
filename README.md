@@ -11,40 +11,13 @@ You can run your application in dev mode that enables live coding using:
 ./mvnw compile quarkus:dev
 ```
 
-## Packaging and running the application
+Connect to H2 file-in-memory db
+You can connect to the H2 file in-memory database through any database manager:
 
-The application can be packaged using:
-```shell script
-./mvnw package
-```
-It produces the `quarkus-h2-1.0.0-SNAPSHOT-runner.jar` file in the `/target` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/lib` directory.
 
-If you want to build an _über-jar_, execute the following command:
-```shell script
-./mvnw package -Dquarkus.package.type=uber-jar
-```
+Copy-paste your absolute path of the /src/main/resources/data/ folder +> ${YOUR_ABSOLUTE_PATH_TO_DATA_FOLDER}
 
-The application is now runnable using `java -jar target/quarkus-h2-1.0.0-SNAPSHOT-runner.jar`.
 
-## Creating a native executable
-
-You can create a native executable using: 
-```shell script
-./mvnw package -Pnative
-```
-
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using: 
-```shell script
-./mvnw package -Pnative -Dquarkus.native.container-build=true
-```
-
-You can then execute your native executable with: `./target/quarkus-h2-1.0.0-SNAPSHOT-runner`
-
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.html.
-
-# RESTEasy JAX-RS
-
-Guide: https://quarkus.io/guides/rest-json
-
+Set the following jdbc connection url over your database manager specifying that the Data Source is H2
+jdbc:h2:file:${YOUR_ABSOLUTE_PATH_TO_DATA_FOLDER}/database;AUTO_SERVER=true;DB_CLOSE_DELAY=-1
 
