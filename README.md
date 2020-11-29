@@ -11,6 +11,40 @@ You can run your application in dev mode that enables live coding using:
 ./mvnw compile quarkus:dev
 ```
 
+## How to set H2 Database console url in the Quarkus
+
+0.	Assuming that you already have the quarkus-jdbc-h2 extension added
+1.	Add the quarkus-vertx and quarkus-undertow extensions
+2.	Create the deployment descriptor under src/main/resources/META-INF/web.xml
+3.	Configure the H2 console Servlet like so
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE web-app
+            PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+            "http://java.sun.com/dtd/web-app_2_3.dtd">
+    
+    <web-app>
+        <display-name>My Web Application</display-name>
+    
+        <servlet>
+            <servlet-name>h2-console</servlet-name>
+            <servlet-class>org.h2.server.web.WebServlet</servlet-class>
+        </servlet>
+    
+        <servlet-mapping>
+            <servlet-name>h2-console</servlet-name>
+            <url-pattern>/h2/*</url-pattern>
+        </servlet-mapping>
+    
+    </web-app>
+
+Run ./mvnw quarkus:dev and go to http://localhost:8080/h2 where the console should show up.
+
+## Absolute Path vs Relative Path
+
+3. Is not scalable and quality code
+2. Is not well programmed
+1. Is not reproducible right out of the box for other developer
 
 ### Connect to H2 file-in-memory db
 
