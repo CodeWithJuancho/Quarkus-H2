@@ -1,4 +1,4 @@
-package org.acme;
+package org.acme.api;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
