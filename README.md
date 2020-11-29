@@ -40,11 +40,11 @@ You can run your application in dev mode that enables live coding using:
 
 Run ./mvnw quarkus:dev and go to http://localhost:8080/h2 where the console should show up.
 
-## Absolute Path vs Relative Path
+## Absolute Path vs Relative Path on application.properties!!
 
-3. Is not scalable and quality code
+1. Is not scalable and quality code
 2. Is not well programmed
-1. Is not reproducible right out of the box for other developer
+3. Is not reproducible right out of the box for other developer
 
 ### Connect to H2 file-in-memory db
 
